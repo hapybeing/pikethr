@@ -1,77 +1,67 @@
 "use client"
 
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useMouse } from "@/hooks/use-mouse"
-import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 
 export default function Hero() {
-
-  const mouse = useMouse()
-
-  const { scrollY } = useScroll()
-
-  const opacity = useTransform(scrollY,[0,400],[1,0])
-
-  const [offset,setOffset] = useState({x:0,y:0})
-
-  useEffect(()=>{
-
-    const x = (mouse.x - window.innerWidth/2) / 40
-    const y = (mouse.y - window.innerHeight/2) / 40
-
-    setOffset({x,y})
-
-  },[mouse])
-
   return (
-
-    <motion.section
-      style={{opacity}}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    <section
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        padding: "0 20px"
+      }}
     >
-
-      <motion.div
-        animate={{x:offset.x,y:offset.y}}
-        transition={{type:"spring",stiffness:40}}
-        className="absolute w-[900px] h-[900px] rounded-full
-        bg-[var(--color-accent)] opacity-[0.05] blur-[140px] hero-glow"
-      />
-
-      <div className="relative z-10 text-center space-y-10 px-6">
+      <div style={{ maxWidth: "900px" }}>
 
         <motion.h1
-          initial={{opacity:0,y:40}}
-          animate={{opacity:1,y:0}}
-          transition={{duration:0.9}}
-          className="text-[64px] md:text-[104px] font-semibold tracking-tight"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          style={{
+            fontSize: "64px",
+            fontWeight: 600,
+            lineHeight: 1.1,
+            marginBottom: "20px"
+          }}
         >
           The Universe
-          <br/>
+          <br />
           of Knowledge
         </motion.h1>
 
         <motion.p
-          initial={{opacity:0,y:40}}
-          animate={{opacity:1,y:0}}
-          transition={{delay:0.2,duration:0.8}}
-          className="max-w-xl mx-auto text-neutral-400 text-lg"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          style={{
+            fontSize: "18px",
+            color: "#aaa",
+            marginBottom: "30px"
+          }}
         >
-          Pike transforms the entirety of human knowledge into an explorable
-          interactive universe.
+          Pike transforms the entirety of human knowledge into an explorable interactive universe.
         </motion.p>
 
         <motion.button
-          whileHover={{scale:1.06}}
-          whileTap={{scale:0.96}}
-          className="px-8 py-3 rounded-full bg-[var(--color-accent)]
-          text-white font-medium shadow-glow transition-all"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          style={{
+            padding: "12px 28px",
+            borderRadius: "999px",
+            border: "1px solid rgba(255,255,255,0.15)",
+            background: "rgba(255,255,255,0.05)",
+            color: "white",
+            cursor: "pointer",
+            backdropFilter: "blur(10px)"
+          }}
         >
           Explore the Graph
         </motion.button>
 
       </div>
-
-    </motion.section>
-
+    </section>
   )
 }
