@@ -15,28 +15,41 @@ export default function Navbar() {
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6"
+      style={{
+        position: "fixed",
+        top: 20,
+        left: 0,
+        right: 0,
+        display: "flex",
+        justifyContent: "center",
+        zIndex: 50
+      }}
     >
-      <div className="flex items-center gap-8 px-8 py-3 rounded-full backdrop-blur-md bg-white/5 border border-white/10 shadow-lg">
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "30px",
+          padding: "10px 25px",
+          borderRadius: "999px",
+          background: "rgba(255,255,255,0.05)",
+          backdropFilter: "blur(12px)",
+          border: "1px solid rgba(255,255,255,0.1)"
+        }}
+      >
+        <div style={{ fontWeight: 600 }}>Pike</div>
 
-        <div className="text-sm font-semibold tracking-wide">
-          Pike
-        </div>
-
-        <div className="flex items-center gap-6 text-sm text-neutral-300">
-
-          {links.map((link) => (
+        <div style={{ display: "flex", gap: "20px", color: "#aaa" }}>
+          {links.map(link => (
             <a
               key={link.name}
               href={link.href}
-              className="hover:text-white transition-colors"
+              style={{ textDecoration: "none", color: "#aaa" }}
             >
               {link.name}
             </a>
           ))}
-
         </div>
-
       </div>
     </motion.nav>
   )
