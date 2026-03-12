@@ -20,3 +20,19 @@
     box-shadow: 0 0 0px rgba(124,124,255,0.2);
   }
 }
+
+@keyframes floatSlow {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.hero-glow {
+  animation: floatSlow 12s ease-in-out infinite;
+}
