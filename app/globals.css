@@ -13,6 +13,7 @@ body {
   color: var(--color-text);
   font-family: var(--font-primary);
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 * {
@@ -21,4 +22,8 @@ body {
 
 canvas {
   display: block;
+}
+
+section {
+  position: relative;
 }
