@@ -3,6 +3,13 @@
 import { motion } from "framer-motion"
 
 export default function Hero() {
+  const scrollToGraph = () => {
+    const el = document.getElementById("graph-section")
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
     <section
       style={{
@@ -48,6 +55,7 @@ export default function Hero() {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={scrollToGraph}
           style={{
             padding: "12px 28px",
             borderRadius: "999px",
